@@ -1,0 +1,19 @@
+# Dependencies / tooling
+node_modules/
+
+# Build / generated artifacts
+dist/
+build/
+.tokens/
+.generated/
+
+# OS
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# Local tooling / private references
+.claude/
+references/
