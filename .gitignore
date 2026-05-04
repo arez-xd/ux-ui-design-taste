@@ -1,19 +1,17 @@
-# Dependencies / tooling
-node_modules/
+.DS_Store
+Thumbs.db
 
-# Build / generated artifacts
+# Local editor and AI-agent state
+.vscode/
+.idea/
+.codex/
+.cursor/
+
+# Logs and temporary output
+*.log
+*.tmp
+tmp/
 dist/
 build/
-.tokens/
-.generated/
+node_modules/
 
-# OS
-.DS_Store
-
-# Editors
-.idea/
-.vscode/
-
-# Local tooling / private references
-.claude/
-references/
