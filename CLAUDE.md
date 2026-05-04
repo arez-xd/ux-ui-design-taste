@@ -1,41 +1,50 @@
-# design-taste
+# CLAUDE.md
 
-This repository contains the `design-taste` AI agent skill — portable senior design judgment for frontend UI work.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Using this skill in Claude Code
+## What this repository is
 
-### Option 1: Install as a Claude Code skill
+A portable AI agent skill (`design-taste`) that gives AI coding agents senior product designer judgment when building or reviewing frontend UI. It is a documentation and configuration repository — there is no build step, no test suite, and no dependencies to install.
 
-Copy `skills/design-taste/` into your project's `.claude/skills/` directory:
+## Key command
 
 ```bash
-cp -r skills/design-taste path/to/your-project/.claude/skills/
+# Returns the path to the skill's SKILL.md file (used by skill loaders)
+source ./skill.sh design-taste
 ```
 
-Claude Code will pick up the skill automatically. Reference it in prompts with `$design-taste`.
+## Architecture
 
-### Option 2: Inject into CLAUDE.md
+### Source of truth
 
-Copy the contents of `skills/design-taste/SKILL.md` into your project's `CLAUDE.md`. The references in `references/` can be copied alongside it and linked with relative paths.
+`skills/design-taste/SKILL.md` is the canonical content layer. Everything else derives from it.
 
-### Option 3: Reference inline
+It contains:
+- YAML frontmatter (`name`, `description`) consumed by Claude Code and Codex skill loaders
+- Core design principles (the 5 rules, 7 principle categories, pre-output checklist, anti-patterns, motion, responsive, states)
+- A **Reference Routing** section that maps task types to specific files in `references/`
 
-Paste the SKILL.md content directly into a prompt for a one-shot design pass without installation.
+### Reference files
 
----
+`skills/design-taste/references/` contains deep-dive guidance loaded on demand — never all at once. The routing logic in `SKILL.md` determines which file applies to which task. Do not collapse references into `SKILL.md`.
 
-## Editing this skill
+### Adapter files
 
-- **Core behavior and routing:** `skills/design-taste/SKILL.md`
-- **Deep-dive references:** `skills/design-taste/references/`
-- **Claude agent config:** `skills/design-taste/agents/claude.yaml`
-- **Codex agent config:** `skills/design-taste/agents/openai.yaml`
+Three files embed `SKILL.md` content inline because Cursor and Copilot cannot dynamically load files:
 
-Rules:
-- Keep `SKILL.md` focused on principles and routing. Details go in `references/`.
-- Do not load or duplicate every reference into `SKILL.md` — the routing section handles that.
-- Preserve YAML frontmatter (`name`, `description`) — both Claude Code and Codex read it.
-- When you update `SKILL.md`, sync the summary content in:
-  - `.github/copilot-instructions.md` (Copilot uses this as live context)
-  - `.cursor/rules/design-taste.mdc` (Cursor uses this as live context)
-  - `README.md` "What It Optimizes For" section
+| File | Tool | Notes |
+|---|---|---|
+| `.cursor/rules/design-taste.mdc` | Cursor | MDC frontmatter + condensed SKILL.md content; globs activate it on frontend files |
+| `.github/copilot-instructions.md` | GitHub Copilot | Full design judgment content; users copy this to their project's `.github/` |
+| `skills/design-taste/agents/claude.yaml` | Claude Code | Thin config pointing to SKILL.md |
+| `skills/design-taste/agents/openai.yaml` | OpenAI Codex | Thin config for Codex skill loader |
+
+**When SKILL.md changes**, the adapter files must be updated to stay in sync. The Cursor and Copilot files are not auto-generated — they require a manual sync pass.
+
+## Editorial rules
+
+- Keep `SKILL.md` focused on principles and routing logic. Detailed component/pattern guidance belongs in `references/`.
+- The YAML frontmatter `description` field in `SKILL.md` is what skill loaders surface to users. Keep it accurate.
+- `README.md` is the public-facing install guide. The "What It Optimizes For" section should stay aligned with the actual principles in `SKILL.md`.
+- `examples/prompts.md` has prompt templates per tool (Claude Code, Cursor, Copilot, Codex). Add examples there when new usage patterns emerge.
+- No magic numbers, no one-off styling, no generated marketing claims the skill does not support (per `.github/copilot-instructions.md` repo style).
