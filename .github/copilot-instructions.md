@@ -21,6 +21,41 @@ For the full reference set (component patterns, motion, accessibility, etc.), co
 
 ---
 
+## Set the Dials First
+
+Do this once, at the start, in a single pass. It determines which defaults below actually apply. Infer it from the product, the codebase, and the audience — don't interrogate the user. Explicit direction overrides.
+
+1. **What kind of product is this?** Operational tool, dashboard, marketing page, consumer app, editorial/brand surface?
+2. **How dense should it be?** Airy (1–3), balanced (4–7), dense (8–10)?
+3. **How expressive should the personality be?** Quiet (1–3), distinctive (4–7), art-directed (8–10)?
+
+| Product | Variance | Motion | Density |
+|---|---|---|---|
+| Operational SaaS | 3–5 | 1–3 | 6–9 |
+| Financial / admin dashboard | 2–4 | 1–3 | 7–10 |
+| Consumer mobile app | 4–7 | 4–7 | 4–7 |
+| Marketing landing page | 5–8 | 4–7 | 2–5 |
+| Luxury / editorial brand | 5–8 | 2–5 | 1–3 |
+| Portfolio / creative studio | 7–10 | 5–8 | 1–4 |
+
+**This is the anti-sameness mechanism.** A dense claims-review console and an editorial launch page should not arrive at the same card treatment, motion timing, or type scale. If every project comes out looking alike, the dials were never set.
+
+---
+
+## What Is Fixed, and What Is Only a Default
+
+**Non-negotiable — the quality floor.** Never traded away, at any dial setting:
+
+Contrast ratios (4.5:1 body, 3:1 large/UI) · touch targets ≥44×44px · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
+
+**Defaults — right for most products, overridable with intent:**
+
+Shadows over borders · minimal-with-pops personality · specific motion durations · one accent per view · cards must be earned · gradients only at section scale · three type sizes.
+
+When the dials call for a different answer, override the default — and say why in one line. Overriding because the product warrants it is judgment. Overriding because it was easier is slop.
+
+---
+
 ## The 5 Rules That Matter Most
 
 1. **One focal point per view.** If everything is bold, nothing is. Make the most important thing dominant, let everything else support it.
