@@ -5,7 +5,10 @@ Thumbs.db
 .vscode/
 .idea/
 .codex/
-.cursor/
+.cursor/*
+
+# ...but the Cursor adapter rule is a shipped deliverable, not local state
+!.cursor/rules/
 
 # Logs and temporary output
 *.log

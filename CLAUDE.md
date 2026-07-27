@@ -24,6 +24,17 @@ It contains:
 - Core design principles (the 5 rules, 7 principle categories, pre-output checklist, anti-patterns, motion, responsive, states)
 - A **Reference Routing** section that maps task types to specific files in `references/`
 
+### The two-tier rule model
+
+The skill deliberately separates two kinds of guidance, and `SKILL.md` states the split explicitly in the "What Is Fixed, and What Is Only a Default" section:
+
+- **Non-negotiable** — the quality floor (contrast, touch targets, focus, semantics, compositor-friendly animation, state coverage, content realism). Written as imperatives. Never softened.
+- **Defaults** — aesthetic calls that are right for most products but wrong for some (shadows vs borders, motion durations, accent count, minimal-with-pops). Written as a question plus a small set of context-keyed answers.
+
+The mechanism that keeps every project from looking alike is **"Set the Dials First"** in `SKILL.md`: a one-pass, three-question context read (product type, density, expressiveness) that runs before any principle is applied. It is deliberately a single upfront pass, not per-decision Q&A — the goal is calibration, not an interrogation loop. `references/visual-dials.md` holds the deeper calibration guidance.
+
+When adding guidance, decide which tier it belongs to first. Aesthetic preferences written as universal imperatives are what produces the "every output looks the same" failure this structure exists to prevent.
+
 ### Reference files
 
 `skills/design-taste/references/` contains deep-dive guidance loaded on demand — never all at once. The routing logic in `SKILL.md` determines which file applies to which task. Do not collapse references into `SKILL.md`.
@@ -44,6 +55,7 @@ Three files embed `SKILL.md` content inline because Cursor and Copilot cannot dy
 ## Editorial rules
 
 - Keep `SKILL.md` focused on principles and routing logic. Detailed component/pattern guidance belongs in `references/`.
+- Before adding a rule, classify it: quality floor (imperative) or aesthetic default (question + context-keyed answers). See the two-tier model above.
 - The YAML frontmatter `description` field in `SKILL.md` is what skill loaders surface to users. Keep it accurate.
 - `README.md` is the public-facing install guide. The "What It Optimizes For" section should stay aligned with the actual principles in `SKILL.md`.
 - `examples/prompts.md` has prompt templates per tool (Claude Code, Cursor, Copilot, Codex). Add examples there when new usage patterns emerge.

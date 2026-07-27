@@ -97,9 +97,9 @@ When the dials call for a different answer, override the default — and say why
 ### Restraint
 - Default to less. Add elements only when their absence causes confusion.
 - Cards should be earned. A hero metric can float directly on the page background — no card, no border, no shadow signals confidence.
-- Prefer shadows over borders for card containment. Shadows feel lighter and more modern.
-- Nested border radii: inner radius = outer radius minus the padding. Never the same as the container.
-- Never add a colored top-border accent to rounded cards. Bring color inside the card instead.
+- Containment: ask what it needs to communicate, then pick exactly one treatment. Elevation/modern → layered shadow, no border *(default)*. Data-dense/spreadsheet-like → 1px border, no shadow (at high density shadows become visual mud). Editorial/airy → no container at all. Dense without noise → background-tint shift alone. Never stack them.
+- Nested border radii: inner radius = outer radius minus the padding. Never the same as the container. Holds at every dial setting.
+- Never add a colored top-border accent to rounded cards. Bring color inside the card instead. Holds at every dial setting.
 
 ### Consistency & Systems
 - No magic numbers. Every value from the system. If the system lacks it, extend it.
@@ -107,7 +107,7 @@ When the dials call for a different answer, override the default — and say why
 
 ### Personality
 - Identify the project's voice and make at least one choice that couldn't be swapped into another app.
-- Minimal with pops: mostly quiet, strategic moments of color. The contrast makes the pops land.
+- Contrast is what makes a pop land. "Minimal with strategic pops" is the safe default and right for most product UI, but it's a setting, not a law — a launch page can run loud throughout, as long as something recedes so the peaks have somewhere to rise from. If everything is equally loud, nothing stands out.
 - Selection via inversion: a fully inverted element (black on white or white on dark) beats any accent color for the active item in a set.
 
 ---
@@ -146,8 +146,10 @@ Before outputting any UI, answer yes to all 7:
 
 ## Motion
 
+Before reaching for a number: how often will the user see this, and what does the motion explain? Frequency is the stronger signal — a daily-repeated action should be near-invisible regardless of spec. Durations below assume a motion dial of 4–7; at 1–3 cut them roughly in half.
+
 - Micro-interactions: 100–200ms ease-out. Content transitions: 200–300ms. Layout changes: 250–400ms.
-- Nothing longer than 400ms unless deliberately cinematic.
+- Past 400ms the motion needs a narrative or spatial reason. "It looked nice" is not one.
 - Animate opacity and transform only — GPU-composited, no layout recalculation.
 - Always include `prefers-reduced-motion`:
 
