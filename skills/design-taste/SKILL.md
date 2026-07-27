@@ -90,7 +90,7 @@ Do not load every reference by default. Choose the smallest set that directly ap
 
 4. **If you can remove it and nothing breaks, remove it.** This is the single hardest design principle to practice. Borders, shadows, icons, badges, labels — question every element. Fewer elements executed well always beats many elements competing.
 
-5. **Adapt to the existing system before imposing your own.** Read the codebase first. If there's a token system, spacing scale, color palette, or component library, extend it. Never fight the existing system. If no system exists, default to refined minimalism with one distinctive choice.
+5. **Adapt to the existing system before imposing your own.** Read the codebase before you style anything. Extending what already exists beats introducing something that would be better in isolation. Details in *Before You Write a Single Line of Code* above.
 
 ---
 
@@ -106,7 +106,7 @@ Guide the eye. Every screen has a reading order. Make it obvious through size, w
 - **Contrast creates focus.** High-contrast elements draw attention first. Use this intentionally. Not everything can be high-contrast.
 - **Weight establishes structure.** Bold headings, regular body, light secondary text. Three levels is usually enough.
 - **Proximity groups content.** Related elements should be visually closer than unrelated ones (Gestalt proximity).
-- **One focal point per view.** If two elements compete for attention at the same level, one needs to yield.
+- **When two elements compete at the same level, one must yield.** Rule 1 applied inside a single component, not just across a screen.
 
 **Review test:** Trace your eye path across the screen. If it bounces randomly, the hierarchy is broken.
 
@@ -119,11 +119,10 @@ Color communicates. Every hue, saturation level, and contrast choice sends a sig
 - **Saturation signals importance.** High-saturation colors demand attention. Reserve them for primary actions and critical states. Use desaturated variants for secondary information.
 - **Contrast is accessibility.** 4.5:1 minimum for body text, 3:1 for large text and UI elements. Non-negotiable.
 - **Dark mode isn't inverted light mode.** If supporting dark mode, reduce saturation, adjust contrast ratios, and test separately. Don't just flip the background colors.
-- **Gradients are a color tool, not decoration.** A subtle gradient bloom or a muted color wash on a section background adds warmth and depth. Use them at scale (backgrounds, hero areas, section accents) with muted, analogous palettes. Keep the gradient behind content, not on interactive elements.
 
 **Review test:** Squint at the screen. The colors that pop should be the ones that matter most.
 
-**On bad gradients specifically:** The default purple-to-blue hero, gradient text for no reason, rainbow gradient buttons — these are the hallmark of template UI and scream "no designer touched this."
+**On gradients.** The default purple-to-blue hero, gradient text for no reason, rainbow gradient buttons — these are the hallmark of template UI and scream "no designer touched this."
 
 What good gradients look like:
 - **Atmospheric blooms:** Soft radial gradient glows in the background, one or two muted colors dissolving into the base. These create mood, warmth, and depth. Use `filter: blur()` or large radial-gradients at low opacity. Multiple colors are fine if they're muted and blend naturally.
@@ -163,7 +162,7 @@ When reviewing: are the gaps between elements intentional, or did things just en
 The principle that separates senior designers from everyone else. Good design is mostly knowing what to leave out.
 
 - **Default to less.** Start minimal. Add elements only when their absence causes confusion.
-- **Question every visual treatment.** Does this border add clarity or noise? Does this shadow help or is it decoration? Does this icon communicate or clutter? Prefer subtle shadows over borders for card containment. They feel lighter and more modern.
+- **Question every visual treatment.** Does this border add clarity or noise? Does this shadow help or is it decoration? Does this icon communicate or clutter?
 - **Decoration is not design.** Gradients, patterns, illustrations, and ornamental elements should serve a purpose. If the purpose is "it looked empty," the real problem is layout or content.
 - **Embrace empty space.** A screen that "feels empty" might actually feel calm and focused. Test whether users can complete their task before adding visual filler.
 - **Cards should be earned.** Not every piece of content needs a card container. A hero metric, a key number, or a primary heading can float directly on the page background: no card, no border, no shadow. The absence of a container signals confidence and importance. Reserve cards for grouped content that benefits from visual containment.
@@ -201,7 +200,6 @@ The anti-template-sameness principle. Projects should feel like themselves.
 - **Contrast is what makes a pop land.** Whatever the overall register — quiet, distinctive, or art-directed — richness only reads as richness against something calmer. "Minimal with strategic pops" is the safe default and the right call for most product UI, but it is a setting, not a law: a launch page or a creative portfolio can run loud throughout, as long as *something* recedes so the peaks have somewhere to rise from. If everything is equally loud, nothing stands out. That part is always true.
 - **Distinctive does not mean distracting.** Personality should enhance usability, not compete with it. The best distinctive choices are the ones users notice subconsciously.
 - **Challenge the first idea.** If your instinct is a standard card grid with rounded corners and a blue primary, stop. That's the default, not a choice. Make at least one deliberate decision that this project's version of this pattern couldn't be swapped into any other app.
-- **Selection via inversion.** A fully inverted element — black on a white field or white on a dark field — is a stronger selection indicator than any accent color, border, or shadow. Use it for the current/active item in a set (active tab, selected card, current page in nav). One inverted element per view. It becomes the anchor.
 
 When reviewing: could this UI belong to any project? If yes, it needs more intentionality.
 
@@ -269,7 +267,7 @@ Hard blocks. If you catch yourself producing any of these, stop and revise.
 ### Template Sameness
 **What it is:** The generic SaaS/dashboard look everyone recognizes as AI-generated. Same card grids, same sidebar nav, same hero sections with the same gradient.
 **Why it's wrong:** It signals "no design thought went into this." Users form trust impressions in milliseconds.
-**Do this instead:** Before generating any layout, ask "What makes *this project's* version distinctive?" Make at least one choice that couldn't be swapped into another app unchanged.
+**Do this instead:** Set the dials, then apply *Personality* above. If the dials were never set, this is the failure mode you get.
 
 ### Lazy Gradients
 **What it is:** The default purple-to-blue hero. Gradient text for no reason. Rainbow gradient buttons. Loud, saturated gradients slapped on UI elements as a substitute for actual design thinking.
@@ -279,7 +277,7 @@ Hard blocks. If you catch yourself producing any of these, stop and revise.
 ### Over-Decoration
 **What it is:** Shadows AND borders AND rounded corners AND background color AND hover effect, all on the same element.
 **Why it's wrong:** Each decorative treatment fights for attention. Everything competes and nothing wins.
-**Do this instead:** Pick one primary visual treatment per element. A card should use a subtle shadow OR a border, never both. Prefer soft shadows over borders for card elevation — they feel modern and lightweight while borders feel heavier and more dated. For realistic depth, layer shadows: a tight, dark "ambient" shadow close to the element plus a softer, spread-out "directional" shadow. When a card has rounded corners, never add a colored top-border accent — it clashes with the radius and looks dated. If you need color accents on cards, bring color inside the card: colored titles, colored values, or a small color dot next to labels.
+**Do this instead:** Pick one primary visual treatment per element and stop. Shadow OR border, never both. Which one depends on the dials — see the containment options under *Restraint*.
 
 ### Mystery Meat Navigation
 **What it is:** Icons without labels. Unclear CTAs. Navigation that requires hovering to understand.
@@ -371,13 +369,12 @@ Every component you create should work across screen sizes. Not as an afterthoug
 
 ### Breakpoint Thinking
 
-- **Mobile (375px):** What's essential? Stack vertically. One column. Prioritize actions. Touch targets minimum 44×44px — no exceptions.
+- **Mobile (375px):** What's essential? Stack vertically. One column. Prioritize actions. Touch targets minimum 44×44px — no exceptions. A 32px button that's easy to hit with a mouse is a frustration on touch.
 - **Tablet (768px):** Where can you introduce side-by-side layouts? What groupings emerge naturally at this width?
 - **Desktop (1200px+):** Full layout. Multi-column. But never wider than the content can support. Max-width matters — a line of body text at full 1440px width is unreadable.
 
 ### Responsive Rules
 
-- **Touch targets:** Minimum 44×44px on mobile. No exceptions. A 32px button easy to click with a mouse causes frustration on touch.
 - **Content priority changes by viewport.** What's primary on desktop may be secondary on mobile. A sidebar containing secondary navigation on desktop should either collapse entirely on mobile or stack below the main content — never just shrink.
 - **Don't just shrink.** A desktop layout squished to 375px is not responsive design. Rethink the information hierarchy for each context. A three-column card grid becomes one column. A data table may need to reflow into a card stack. A horizontal nav becomes a bottom tab bar or a hamburger.
 - **Flag graceless stacking.** If a horizontal layout doesn't have a clear vertical stacking order, raise it before implementing. "How should these reorder on mobile?" is a design question, not a CSS question.
