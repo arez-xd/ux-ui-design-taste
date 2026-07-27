@@ -20,6 +20,47 @@ Read the context first:
 
 ---
 
+## Set the Dials First
+
+Do this once, at the start, in a single pass. It takes seconds and it determines which defaults below actually apply. Do not turn it into a questionnaire for the user — infer it from the product, the codebase, and the audience. If the user gave direction, that overrides.
+
+1. **What kind of product is this?** Operational tool, dashboard, marketing page, consumer app, editorial/brand surface?
+2. **How dense should it be?** Airy (1–3), balanced (4–7), dense (8–10)?
+3. **How expressive should the personality be?** Quiet (1–3), distinctive (4–7), art-directed (8–10)?
+
+Common starting points:
+
+| Product | Variance | Motion | Density |
+|---|---|---|---|
+| Operational SaaS | 3–5 | 1–3 | 6–9 |
+| Financial / admin dashboard | 2–4 | 1–3 | 7–10 |
+| Consumer mobile app | 4–7 | 4–7 | 4–7 |
+| Marketing landing page | 5–8 | 4–7 | 2–5 |
+| Luxury / editorial brand | 5–8 | 2–5 | 1–3 |
+| Portfolio / creative studio | 7–10 | 5–8 | 1–4 |
+
+**This is the anti-sameness mechanism.** A dense claims-review console and an editorial launch page should not arrive at the same card treatment, the same motion timing, or the same type scale. If every project you touch comes out looking alike, the dials were never set.
+
+Don't expose the dials to the user unless naming one explains a design choice. Deeper calibration: `references/visual-dials.md`.
+
+---
+
+## What Is Fixed, and What Is Only a Default
+
+Two different kinds of rules live in this skill. Treat them differently.
+
+**Non-negotiable — the quality floor.** Never traded away, at any dial setting:
+
+Contrast ratios (4.5:1 body, 3:1 large/UI) · touch targets ≥44×44px · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
+
+**Defaults — right for most products, overridable with intent.** Everything else, including:
+
+Shadows over borders · minimal-with-pops personality · specific motion durations · one accent per view · cards must be earned · gradients only at section scale · three type sizes.
+
+When the dials call for a different answer, override the default — and say why in one line. Overriding because the product warrants it is judgment. Overriding because it was easier is slop.
+
+---
+
 ## Reference Routing
 
 Keep this file as the core design judgment layer. Read the targeted references only when the task needs them:
@@ -128,10 +169,14 @@ The principle that separates senior designers from everyone else. Good design is
 - **Cards should be earned.** Not every piece of content needs a card container. A hero metric, a key number, or a primary heading can float directly on the page background: no card, no border, no shadow. The absence of a container signals confidence and importance. Reserve cards for grouped content that benefits from visual containment.
 - **One animation, one hover effect, one accent is often enough.** Restraint in interaction design matters as much as visual restraint.
 
-**On card decoration specifically:**
-- Prefer subtle shadows over borders for card containment. Shadows feel lighter and more modern; borders feel heavier and more dated.
-- For convincing depth, layer shadows: a tight, dark "ambient" shadow close to the element plus a softer, spread-out "directional" shadow creates convincing lift without looking heavy.
-- When a card has rounded corners, never add a colored top-border accent. It clashes with the radius and looks dated. If you need color accents on cards, bring color inside the card: colored titles, colored values, or a small color dot next to labels.
+**On card decoration specifically —** ask what containment needs to communicate here, then pick one treatment:
+
+- **Elevation, modern, mid-density** → layered shadow, no border. *(Default.)* For convincing depth, layer two: a tight, dark "ambient" shadow close to the element plus a softer, spread-out "directional" shadow.
+- **Structure, data-dense, spreadsheet-like** → a 1px border, no shadow. At density 8–10 shadows become visual mud; borders do the work.
+- **Premium restraint, editorial, airy** → no container at all. The content floats on the page background.
+- **High density without visual noise** → a background-tint shift alone. No border, no shadow.
+
+Pick one. Never stack them. Whatever you pick, two rules hold at every dial setting: inner radii stay smaller than outer radii, and a rounded card never gets a colored top-border accent — it clashes with the radius and reads as dated. Bring color inside instead: colored titles, colored values, or a small dot next to labels.
 
 When reviewing: try removing elements one by one. If the design works without it, it shouldn't be there.
 
@@ -153,7 +198,7 @@ The anti-template-sameness principle. Projects should feel like themselves.
 
 - **Identify the project's voice.** A children's education app and a financial dashboard shouldn't feel the same, even if they use the same component patterns.
 - **Personality lives in details.** A distinctive empty state illustration. A slightly unconventional button radius. A signature micro-interaction. A subtle gradient bloom that gives a section warmth. These small choices add up to identity.
-- **Minimal with pops.** The best interfaces are mostly quiet: neutral, clean, restrained, with strategic moments of color or richness. A gradient section, a colored card, a warm glow behind a hero metric. The contrast between "quiet" and "pop" is what makes the pops land. If everything is colorful, nothing stands out.
+- **Contrast is what makes a pop land.** Whatever the overall register — quiet, distinctive, or art-directed — richness only reads as richness against something calmer. "Minimal with strategic pops" is the safe default and the right call for most product UI, but it is a setting, not a law: a launch page or a creative portfolio can run loud throughout, as long as *something* recedes so the peaks have somewhere to rise from. If everything is equally loud, nothing stands out. That part is always true.
 - **Distinctive does not mean distracting.** Personality should enhance usability, not compete with it. The best distinctive choices are the ones users notice subconsciously.
 - **Challenge the first idea.** If your instinct is a standard card grid with rounded corners and a blue primary, stop. That's the default, not a choice. Make at least one deliberate decision that this project's version of this pattern couldn't be swapped into any other app.
 - **Selection via inversion.** A fully inverted element — black on a white field or white on a dark field — is a stronger selection indicator than any accent color, border, or shadow. Use it for the current/active item in a set (active tab, selected card, current page in nav). One inverted element per view. It becomes the anchor.
@@ -276,10 +321,14 @@ Motion should communicate, not decorate.
 
 ### Timing Guidelines
 
+Before reaching for a number, ask the two questions that actually decide it: **how often will the user see this**, and **what does the motion explain?** Frequency is the stronger signal — a transition on a daily-repeated action should be near-invisible no matter what the spec says, and a once-per-session reveal can afford presence.
+
+These are defaults calibrated to a motion dial of 4–7. At 1–3 cut them roughly in half; at 8–10 a deliberate cinematic moment may run well past them.
+
 - **Micro-interactions** (button press, toggle, checkbox): 100–200ms, ease-out.
 - **Content transitions** (tab switch, accordion, tooltip): 200–300ms, ease-in-out.
 - **Layout changes** (panel open, page transition): 250–400ms, ease-in-out.
-- **Nothing should take longer than 400ms,** unless it's a deliberate cinematic moment (page load animation, onboarding sequence).
+- **Past 400ms** the motion needs a narrative or spatial reason. "It looked nice" is not one.
 
 ### Motion Principles
 
