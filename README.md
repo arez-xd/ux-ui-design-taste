@@ -2,21 +2,50 @@
   <img src="assets/banner.png" alt="Design Taste — senior product-design judgment for interfaces built with AI agents" width="100%" />
 </p>
 
-<h1 align="center">UX/UI Design Taste</h1>
+<h3 align="center">Make AI-built UI look designed, not generated.</h3>
 
 <p align="center">
-  <strong>Senior product design judgment for AI-assisted frontend work.</strong>
+  An agent skill that gives your coding agent a senior designer's judgment:<br />
+  hierarchy, spacing, restrained colour, real content, accessible states, and no template tells.
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" alt="MIT License" /></a>
-  <a href="#whats-new-in-20"><img src="https://img.shields.io/badge/Version-2.0-8b5cf6?style=for-the-badge" alt="Version 2.0" /></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Works%20with-Claude%20%7C%20Cursor%20%7C%20Copilot%20%7C%20Codex-0f766e?style=for-the-badge" alt="Claude, Cursor, Copilot, Codex" /></a>
-  <br />
-  <a href="skills/design-taste/references/accessibility-review.md"><img src="https://img.shields.io/badge/WCAG-2.2%20AA-1d4ed8?style=for-the-badge" alt="WCAG 2.2 AA" /></a>
-  <a href="skills/design-taste/scripts/slop-scan.js"><img src="https://img.shields.io/badge/Script-slop--scan.js-f59e0b?style=for-the-badge" alt="slop-scan.js" /></a>
-  <a href="https://github.com/arez-xd/ux-ui-design-taste/stargazers"><img src="https://img.shields.io/github/stars/arez-xd/ux-ui-design-taste?style=for-the-badge&color=111827" alt="GitHub stars" /></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Claude%20Code-skill-d97757?logo=claude&logoColor=white" alt="Claude Code skill" /></a>
+  <a href="#cursor"><img src="https://img.shields.io/badge/Cursor-rule-111827?logo=cursor&logoColor=white" alt="Cursor rule" /></a>
+  <a href="#github-copilot"><img src="https://img.shields.io/badge/Copilot-instructions-24292f?logo=githubcopilot&logoColor=white" alt="Copilot instructions" /></a>
+  <a href="#openai-codex"><img src="https://img.shields.io/badge/Codex-skill-10a37f?logo=openai&logoColor=white" alt="Codex skill" /></a>
+  <a href="skills/design-taste/references/accessibility-review.md"><img src="https://img.shields.io/badge/WCAG-2.2%20AA-1d4ed8" alt="WCAG 2.2 AA" /></a>
+  <a href="#whats-new-in-20"><img src="https://img.shields.io/badge/version-2.0-8b5cf6" alt="Version 2.0" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-f5c518" alt="MIT license" /></a>
 </p>
+
+<p align="center">
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#whats-new-in-20">What's new</a> ·
+  <a href="#what-it-optimizes-for">What it does</a> ·
+  <a href="#references">References</a> ·
+  <a href="#install">Install</a>
+</p>
+
+## Quick start
+
+```bash
+npx skills add arez-xd/ux-ui-design-taste
+```
+
+Then ask your agent:
+
+```text
+Build the pricing page for our invoicing app. Use design-taste.
+```
+
+```text
+This dashboard looks AI-generated. Review it with design-taste and fix what you find.
+```
+
+The [open skills CLI](https://github.com/vercel-labs/skills) installs into Claude Code, Codex, Cursor and other agents; per-tool setup without it is under [Install](#install).
+
+## What this is
 
 `design-taste` is an AI agent skill that makes generated interfaces feel intentional: clearer hierarchy, stronger spacing, better typography, more restrained color, realistic content, accessible interaction states, and fewer generic template tells.
 
