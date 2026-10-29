@@ -53,6 +53,8 @@ This skill is the result of hands-on research into what actually works and what 
 
 It is framework-agnostic. Use it with React, Next.js, HTML/CSS, Framer code components, shadcn/ui, or any frontend surface where visual quality matters.
 
+Building dashboards, pro tools or native iOS screens? [Design Taste Pro](https://agensi.io/r/ADAMREEL?to=/skills/design-taste-pro) is the companion skill for screens people work in all day.
+
 ---
 
 ## What's new in 2.0
@@ -256,7 +258,7 @@ Those tools can't dynamically load files from `references/` the way Claude Code 
 Yes. Ask the agent to use `$design-taste` (or reference design-taste principles) for a review pass before implementation.
 
 **What about dashboards, tools and iOS apps?**
-This skill covers general UI and pages. Screens people work in all day — dense dashboards, pro tools, device control, money, native iOS with SwiftUI and Liquid Glass — have their own failure modes (numbers that disagree, lists laid out for one count, glass on content). Those are covered by Design Taste Pro, a paid companion skill on Agensi.
+This skill covers general UI and pages. Screens people work in all day — dense dashboards, pro tools, device control, money, native iOS with SwiftUI and Liquid Glass — have their own failure modes (numbers that disagree, lists laid out for one count, glass on content). Those are covered by [Design Taste Pro](https://agensi.io/r/ADAMREEL?to=/skills/design-taste-pro), a paid companion skill on Agensi.
 
 **Why split references out of SKILL.md?**
 Progressive disclosure. The agent reads the core rules first, then loads only the targeted reference files needed for the current task. Keeps the main context focused.
