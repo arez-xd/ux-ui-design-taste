@@ -51,7 +51,7 @@ Two different kinds of rules live in this skill. Treat them differently.
 
 **Non-negotiable — the quality floor.** Never traded away, at any dial setting:
 
-Contrast ratios (4.5:1 body, 3:1 large/UI) · touch targets ≥44×44px · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
+Contrast ratios (4.5:1 text, 3:1 large text and meaningful UI parts) · targets ≥24×24 CSS px or spaced apart (WCAG 2.2 AA), 44×44 for primary touch actions · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
 
 **Defaults — right for most products, overridable with intent.** Everything else, including:
 
@@ -73,6 +73,7 @@ Keep this file as the core design judgment layer. Read the targeted references o
 - **Content realism:** `references/content-realism.md` when generating example content, names, metrics, testimonials, empty states, errors, labels, or product copy.
 - **Visual calibration:** `references/visual-dials.md` when the user asks for a stronger/weaker visual direction, more/less motion, denser/airier UI, or when the request is underspecified.
 - **Frontend implementation guardrails:** `references/frontend-guardrails.md` when writing React/Next/Tailwind UI code, adding dependencies, using viewport-height sections, or touching responsive layout mechanics.
+- **Generated-looking pages:** `references/page-slop.md` when building or reviewing a landing page, marketing site or consumer web page, or when the user says it "looks AI-generated". Count the markers with `scripts/slop-scan.js` before and after.
 - **Final polish and expanded anti-patterns:** `references/polish-review.md` when doing a final quality pass, pre-ship review, or when the UI still feels generic despite being correct.
 - **Shadcn implementation:** `references/shadcn-implementation.md` when the project uses shadcn/ui, Radix/Base UI primitives, Tailwind variants, or `components/ui`.
 
@@ -117,7 +118,7 @@ Color communicates. Every hue, saturation level, and contrast choice sends a sig
 - **Functional palette:** A primary action color, a small set of semantic colors (success, warning, error, info), and a neutral scale. That's usually enough.
 - **Max 3 intentional colors per component.** Background/neutral doesn't count. If a card uses blue, green, AND orange, ask why.
 - **Saturation signals importance.** High-saturation colors demand attention. Reserve them for primary actions and critical states. Use desaturated variants for secondary information.
-- **Contrast is accessibility.** 4.5:1 minimum for body text, 3:1 for large text and UI elements. Non-negotiable.
+- **Contrast is accessibility.** 4.5:1 for normal text; 3:1 for large text (24 px, or 18.7 px bold) and for icons, borders and focus rings that carry meaning. Disabled controls and logos are exempt. Measure every text style on every surface it sits on, hover and tinted rows included. Non-negotiable.
 - **Dark mode isn't inverted light mode.** If supporting dark mode, reduce saturation, adjust contrast ratios, and test separately. Don't just flip the background colors.
 
 **Review test:** Squint at the screen. The colors that pop should be the ones that matter most.
@@ -210,7 +211,7 @@ When reviewing: could this UI belong to any project? If yes, it needs more inten
 Run this before outputting any UI. If you can't answer "yes" to all 7, revise before presenting.
 
 1. **Hierarchy:** Is there one clear focal point? Can you trace the intended reading order from most to least important?
-2. **Color:** Does every color serve a functional purpose? Is text contrast at minimum 4.5:1? Are you using 3 or fewer intentional colors in this component?
+2. **Color:** Does every color serve a functional purpose? Is text contrast at least 4.5:1 (3:1 for large text) on every surface it sits on? Are you using 3 or fewer intentional colors in this component?
 3. **Spacing:** Are spatial relationships deliberate? Do related items group together? Does internal padding differ from external gaps?
 4. **System:** Does this follow the project's existing patterns? Are all values from the design system? Any magic numbers or one-offs?
 5. **Restraint:** Can anything be removed without losing meaning or function? Have you defaulted to less rather than more?
@@ -267,7 +268,7 @@ Hard blocks. If you catch yourself producing any of these, stop and revise.
 ### Template Sameness
 **What it is:** The generic SaaS/dashboard look everyone recognizes as AI-generated. Same card grids, same sidebar nav, same hero sections with the same gradient.
 **Why it's wrong:** It signals "no design thought went into this." Users form trust impressions in milliseconds.
-**Do this instead:** Set the dials, then apply *Personality* above. If the dials were never set, this is the failure mode you get.
+**Do this instead:** Set the dials, then apply *Personality* above. If the dials were never set, this is the failure mode you get. The page-level markers (eyebrow pills, gradient headline halves, glowing islands, template triples) and how to count them are in `references/page-slop.md`.
 
 ### Lazy Gradients
 **What it is:** The default purple-to-blue hero. Gradient text for no reason. Rainbow gradient buttons. Loud, saturated gradients slapped on UI elements as a substitute for actual design thinking.
@@ -369,7 +370,7 @@ Every component you create should work across screen sizes. Not as an afterthoug
 
 ### Breakpoint Thinking
 
-- **Mobile (375px):** What's essential? Stack vertically. One column. Prioritize actions. Touch targets minimum 44×44px — no exceptions. A 32px button that's easy to hit with a mouse is a frustration on touch.
+- **Mobile (375px):** What's essential? Stack vertically. One column. Prioritize actions. Targets: at least 24×24 px, or spaced so a 24 px circle around each doesn't overlap its neighbour (WCAG 2.2 AA, 2.5.8). 44×44 px (Apple HIG, WCAG AAA) for primary actions on touch screens. A 32px button that's easy to hit with a mouse is a frustration on touch.
 - **Tablet (768px):** Where can you introduce side-by-side layouts? What groupings emerge naturally at this width?
 - **Desktop (1200px+):** Full layout. Multi-column. But never wider than the content can support. Max-width matters — a line of body text at full 1440px width is unreadable.
 

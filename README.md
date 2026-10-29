@@ -142,10 +142,13 @@ skills/design-taste/
     |-- frontend-guardrails.md
     |-- motion-performance.md
     |-- motion-taste.md
+    |-- page-slop.md
     |-- polish-review.md
     |-- redesign-audit.md
     |-- shadcn-implementation.md
     `-- visual-dials.md
+`-- scripts/
+    `-- slop-scan.js                  # counts generated-UI markers on a rendered page
 ```
 
 **Adapter files** (generated from SKILL.md, keep in sync when updating):
@@ -169,6 +172,7 @@ CLAUDE.md                             # Claude Code repo context
 - Restraint over decoration.
 - Existing design-system alignment before new styling.
 - Interaction states, responsiveness, accessibility, and final polish.
+- Accessibility norms as WCAG writes them: 24 px targets at AA (44 px for primary touch actions), 3:1 for large text, disabled controls exempt.
 
 ---
 
@@ -184,6 +188,7 @@ The skill routes deeper guidance by task type:
 - `frontend-guardrails.md` — React, Next.js, Tailwind, responsive layout mechanics
 - `shadcn-implementation.md` — shadcn/ui, Radix/Base UI, Tailwind variants
 - `visual-dials.md` — calibrating visual direction (stronger/weaker, denser/airier)
+- `page-slop.md` — what makes a landing or marketing page look generated, how to find it with `slop-scan.js`, what to put instead
 - `polish-review.md` — final quality pass, pre-ship review, expanded anti-patterns
 
 ---
@@ -204,6 +209,9 @@ Those tools can't dynamically load files from `references/` the way Claude Code 
 
 **Can it be used for UI review only?**
 Yes. Ask the agent to use `$design-taste` (or reference design-taste principles) for a review pass before implementation.
+
+**What about dashboards, tools and iOS apps?**
+This skill covers general UI and pages. Screens people work in all day — dense dashboards, pro tools, device control, money, native iOS with SwiftUI and Liquid Glass — have their own failure modes (numbers that disagree, lists laid out for one count, glass on content). Those are covered by Design Taste Pro, a paid companion skill on Agensi.
 
 **Why split references out of SKILL.md?**
 Progressive disclosure. The agent reads the core rules first, then loads only the targeted reference files needed for the current task. Keeps the main context focused.

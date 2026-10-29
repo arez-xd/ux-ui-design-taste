@@ -112,7 +112,7 @@ Framework-agnostic reference for common UI patterns. For each component: what go
 **Common AI mistakes:**
 - Multiple button styles with no clear hierarchy (filled + outlined + ghost + icon all at the same level).
 - Generic labels ("Submit", "OK", "Click Here", "Yes").
-- Buttons too small to tap on mobile (under 44px height).
+- Primary buttons too small to tap on mobile (under 44px height); anything under 24px without spacing fails WCAG AA.
 - Decorative button treatments (gradients, shadows, animated borders) on every button.
 - "Cancel" and "Delete" styled identically.
 

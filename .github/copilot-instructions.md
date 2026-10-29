@@ -46,7 +46,7 @@ Do this once, at the start, in a single pass. It determines which defaults below
 
 **Non-negotiable — the quality floor.** Never traded away, at any dial setting:
 
-Contrast ratios (4.5:1 body, 3:1 large/UI) · touch targets ≥44×44px · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
+Contrast ratios (4.5:1 text, 3:1 large text and meaningful UI parts) · targets ≥24×24 CSS px or spaced apart (WCAG 2.2 AA), 44×44 for primary touch actions · visible focus indicators · semantic HTML · `opacity`/`transform`-only animation · no `transition: all` · labels, never placeholder-as-label · `prefers-reduced-motion` · considered states (hover, focus, disabled, loading, empty, error) · no magic numbers · realistic content and data.
 
 **Defaults — right for most products, overridable with intent:**
 
@@ -80,7 +80,7 @@ When the dials call for a different answer, override the default — and say why
 ### Color with Intent
 - Functional palette: one primary action color, semantic colors (success/warning/error/info), neutral scale.
 - Max 3 intentional colors per component. Background/neutral doesn't count.
-- 4.5:1 minimum contrast for body text. 3:1 for large text and UI elements. Non-negotiable.
+- 4.5:1 for normal text; 3:1 for large text (24 px, or 18.7 px bold) and for icons, borders and focus rings that carry meaning. Disabled controls and logos are exempt. Measure every text style on every surface it sits on, hover and tinted rows included. Non-negotiable.
 - Bad gradients: purple-to-blue hero, gradient text, rainbow buttons. These scream template UI.
 - Good gradients: soft radial blooms in backgrounds, subtle surface gradients (2–3% lightness shift). At scale only — never on buttons, text, or small controls.
 
@@ -117,7 +117,7 @@ When the dials call for a different answer, override the default — and say why
 Before outputting any UI, answer yes to all 7:
 
 1. Is there one clear focal point? Can you trace the reading order?
-2. Does every color serve a functional purpose? Is text contrast ≥ 4.5:1?
+2. Does every color serve a functional purpose? Is text contrast ≥ 4.5:1 (3:1 for large text) on every surface?
 3. Are spatial relationships deliberate? Do related items group together?
 4. Does this follow the project's existing patterns? Any magic numbers?
 5. Can anything be removed without losing meaning or function?
@@ -133,6 +133,8 @@ Before outputting any UI, answer yes to all 7:
 **Template Sameness** — generic AI-generated SaaS look. Ask "What makes this project's version distinctive?" before generating any layout.
 
 **Lazy Gradients** — default purple-to-blue hero, gradient text, rainbow buttons. Never.
+
+**Page slop** — an eyebrow pill above every heading, a gradient half in the headline, every section a glowing island, three identical feature cards with icons on tinted squares, everything centred, a fake proof band. One instance is a choice; the same one in every section is slop.
 
 **Over-Decoration** — shadows AND borders AND rounded corners AND background AND hover on the same element. Pick one primary treatment.
 
@@ -167,7 +169,7 @@ Before reaching for a number: how often will the user see this, and what does th
 
 ## Responsive
 
-- Touch targets: minimum 44×44px on mobile. No exceptions.
+- Targets: at least 24×24 px, or spaced so a 24 px circle around each doesn't overlap its neighbour (WCAG 2.2 AA, 2.5.8). 44×44 px (Apple HIG, WCAG AAA) for primary actions on touch screens.
 - Don't just shrink the desktop layout. Rethink the information hierarchy for each context.
 - Tables on mobile: reduce columns, horizontal scroll, or reflow to cards.
 - Use `aspect-ratio` instead of fixed heights on images.

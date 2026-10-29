@@ -32,7 +32,7 @@ Use this when implementing UI code, especially React, Next.js, Tailwind, compone
 - Use dynamic viewport units for full-height sections: `100dvh`, `min-h-dvh`, or `min-h-[100dvh]`.
 - Avoid `h-screen` for mobile browser chrome-sensitive layouts.
 - Plan mobile order explicitly for asymmetric desktop layouts.
-- Keep touch targets at least 44x44px.
+- Keep targets at least 24x24 CSS px or spaced apart (WCAG 2.2 AA); give primary touch actions 44x44.
 - Use `overflow-x-hidden` only after fixing likely overflow sources, not as a blind patch.
 - Text must fit in buttons, cards, panels, and nav items at mobile and desktop widths.
 

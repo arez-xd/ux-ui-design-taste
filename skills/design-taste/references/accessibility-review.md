@@ -66,8 +66,16 @@ Use this when working on interactive UI, forms, dialogs, menus, tabs, dropdowns,
 
 ## Contrast And States
 
-- Body text needs at least 4.5:1 contrast.
-- Large text and UI components need at least 3:1 contrast.
+- Normal text needs at least 4.5:1 contrast. Large text (24 px, or 18.7 px bold) needs 3:1.
+- Icons, input borders and focus indicators that carry meaning need 3:1 against what's next to them.
+- Disabled controls, decorative text and logos are exempt. A disabled control still explains why it's disabled.
+- Measure each text style on each surface it appears on: hover backgrounds, tinted rows, cards on cards.
+
+## Targets
+
+- WCAG 2.2 AA (2.5.8): at least 24×24 CSS px, or enough spacing that a 24 px circle centred on each target doesn't touch another. Inline links in text are exempt.
+- 44×44 is Apple's HIG and WCAG AAA (2.5.5): use it for primary actions on touch screens, not as a rule for every icon in a dense tool.
+- Don't report a 20 px icon button with room around it as an AA failure; report it as a touch comfort issue if the screen is touch-first.
 - Focus, hover, selected, disabled, loading, and error states must be distinguishable.
 - Do not communicate state by color alone.
 - Never remove focus outlines without an equally visible replacement.

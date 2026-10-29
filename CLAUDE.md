@@ -39,6 +39,10 @@ When adding guidance, decide which tier it belongs to first. Aesthetic preferenc
 
 `skills/design-taste/references/` contains deep-dive guidance loaded on demand — never all at once. The routing logic in `SKILL.md` determines which file applies to which task. Do not collapse references into `SKILL.md`.
 
+### Scripts
+
+`skills/design-taste/scripts/slop-scan.js` runs inside a rendered page (browser console or a browser tool) and returns counts of generated-UI markers as JSON. `references/page-slop.md` documents each field and the markers they point at. The counts are places to look, not verdicts.
+
 ### Adapter files
 
 Three files embed `SKILL.md` content inline because Cursor and Copilot cannot dynamically load files:
