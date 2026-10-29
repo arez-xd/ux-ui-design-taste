@@ -1,4 +1,8 @@
-# UX/UI Design Taste
+<p align="center">
+  <img src="assets/banner.png" alt="Design Taste — senior product-design judgment for interfaces built with AI agents" width="100%" />
+</p>
+
+<h1 align="center">UX/UI Design Taste</h1>
 
 <p align="center">
   <strong>Senior product design judgment for AI-assisted frontend work.</strong>
@@ -6,8 +10,12 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge" alt="MIT License" /></a>
-  <a href="#install"><img src="https://img.shields.io/badge/Skill-design--taste-2563eb?style=for-the-badge" alt="design-taste skill" /></a>
+  <a href="#whats-new-in-20"><img src="https://img.shields.io/badge/Version-2.0-8b5cf6?style=for-the-badge" alt="Version 2.0" /></a>
   <a href="#install"><img src="https://img.shields.io/badge/Works%20with-Claude%20%7C%20Cursor%20%7C%20Copilot%20%7C%20Codex-0f766e?style=for-the-badge" alt="Claude, Cursor, Copilot, Codex" /></a>
+  <br />
+  <a href="skills/design-taste/references/accessibility-review.md"><img src="https://img.shields.io/badge/WCAG-2.2%20AA-1d4ed8?style=for-the-badge" alt="WCAG 2.2 AA" /></a>
+  <a href="skills/design-taste/scripts/slop-scan.js"><img src="https://img.shields.io/badge/Script-slop--scan.js-f59e0b?style=for-the-badge" alt="slop-scan.js" /></a>
+  <a href="https://github.com/arez-xd/ux-ui-design-taste/stargazers"><img src="https://img.shields.io/github/stars/arez-xd/ux-ui-design-taste?style=for-the-badge&color=111827" alt="GitHub stars" /></a>
 </p>
 
 `design-taste` is an AI agent skill that makes generated interfaces feel intentional: clearer hierarchy, stronger spacing, better typography, more restrained color, realistic content, accessible interaction states, and fewer generic template tells.
@@ -15,6 +23,14 @@
 This skill is the result of hands-on research into what actually works and what doesn't when giving AI agents design judgment. Not theoretical guidelines — principles battle-tested through real projects and iteration on AI-generated output. The patterns here are the ones that consistently move output from "looks AI-generated" to "looks considered."
 
 It is framework-agnostic. Use it with React, Next.js, HTML/CSS, Framer code components, shadcn/ui, or any frontend surface where visual quality matters.
+
+---
+
+## What's new in 2.0
+
+- **Page slop, named and counted.** [`page-slop.md`](skills/design-taste/references/page-slop.md) lists what makes a landing or marketing page look generated — an eyebrow pill above every heading, a gradient half in the headline, every section a glowing island, the template triple, fake proof — how to find each, what to put instead, and what isn't slop.
+- **[`slop-scan.js`](skills/design-taste/scripts/slop-scan.js).** Paste it into a rendered page and get the markers as JSON: accent use, uppercase and eyebrows, gradients and glows, tinted icon chips, cards inside cards, type sizes and radii. Compare before and after a change.
+- **Accessibility as WCAG writes it.** 24 × 24 px targets at AA (44 × 44 for primary touch actions), 3:1 for large text and meaningful UI parts, disabled controls exempt, contrast measured on every surface. No more "44 px and 4.5:1 for everything".
 
 ---
 
