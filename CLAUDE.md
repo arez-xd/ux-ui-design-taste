@@ -6,13 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A portable AI agent skill (`design-taste`) that gives AI coding agents senior product designer judgment when building or reviewing frontend UI. It is a documentation and configuration repository — there is no build step, no test suite, and no dependencies to install.
 
-## Key command
-
-```bash
-# Returns the path to the skill's SKILL.md file (used by skill loaders)
-source ./skill.sh design-taste
-```
-
 ## Architecture
 
 ### Source of truth
