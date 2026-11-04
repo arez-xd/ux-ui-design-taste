@@ -256,7 +256,7 @@ Those tools can't dynamically load files from `references/` the way Claude Code 
 Yes. Ask the agent to use `$design-taste` (or reference design-taste principles) for a review pass before implementation.
 
 **What about dashboards, tools and iOS apps?**
-This skill covers general UI and pages. Screens people work in all day — dense dashboards, pro tools, device control, money, native iOS with SwiftUI and Liquid Glass — have their own failure modes (numbers that disagree, lists laid out for one count, glass on content), which go beyond this skill's scope.
+Dashboards and data-dense tools are in scope: the density dial runs up to 8–10 for admin and financial dashboards, and `component-taste.md` covers tables and dashboards. Native iOS with SwiftUI is outside it, since the skill works on web frontends.
 
 **Why split references out of SKILL.md?**
 Progressive disclosure. The agent reads the core rules first, then loads only the targeted reference files needed for the current task. Keeps the main context focused.
